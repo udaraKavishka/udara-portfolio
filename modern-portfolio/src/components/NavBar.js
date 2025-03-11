@@ -1,85 +1,62 @@
+import { useState } from 'react';
 import Link from 'next/link';
-import { useRouter } from 'next/router';
+import { usePathname } from 'next/navigation';
+import { Link as ScrollLink } from 'react-scroll';
 import { motion } from 'framer-motion';
-import { ScrollLink } from 'react-scroll';
 
 const NavBar = ({ scrolled }) => {
-    const router = useRouter();
-    const isBlogPage = router.pathname.startsWith('/blog');
+    const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const [activeLink, setActiveLink] = useState('');
+    const pathname = usePathname();
+
+    // Check if the user is on a Blog Page
+    const isBlogPage = pathname.startsWith('/blog');
+
+    const handleLinkClick = (link) => {
+        setActiveLink(link);
+        setIsMenuOpen(false);
+    };
 
     return (
         <motion.nav
-            className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? 'bg-white shadow-md py-3' : 'bg-transparent py-5'
-                }`}
+            className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? 'bg-white shadow-md py-3' : 'bg-transparent py-5'}`}
             initial={{ y: -100 }}
             animate={{ y: 0 }}
             transition={{ duration: 0.5 }}
         >
             <div className="container mx-auto px-4 flex justify-between items-center">
                 {/* Logo */}
-                <Link to="/" className="cursor-pointer">
+                <Link href="/" className="cursor-pointer">
                     <h1 className="text-2xl font-bold text-primary-600">Portfolio</h1>
                 </Link>
 
                 {/* Navigation Links */}
                 <div className="hidden md:flex space-x-8">
-                    {/* Always Show Home */}
                     {isBlogPage ? (
-                        <Link to="/" className="nav-link">Home</Link>
+                        <Link href="/" className="nav-link">Home</Link>
                     ) : (
-                        <ScrollLink
-                            to="home"
-                            smooth={true}
-                            duration={500}
-                            className={`nav-link cursor-pointer ${activeLink === 'home' ? 'text-primary-600' : 'text-gray-600'}`}
-                            onClick={() => handleLinkClick('home')}
-                        >
+                        <ScrollLink to="home" smooth duration={500} className={`nav-link cursor-pointer ${activeLink === 'home' ? 'text-primary-600' : 'text-gray-600'}`} onClick={() => handleLinkClick('home')}>
                             Home
                         </ScrollLink>
                     )}
 
-                    {/* Show Other Links Only on Home Page */}
                     {!isBlogPage && (
                         <>
-                            <ScrollLink
-                                to="about"
-                                smooth={true}
-                                duration={500}
-                                className={`nav-link cursor-pointer ${activeLink === 'about' ? 'text-primary-600' : 'text-gray-600'}`}
-                                onClick={() => handleLinkClick('about')}
-                            >
+                            <ScrollLink to="about" smooth duration={500} className={`nav-link cursor-pointer ${activeLink === 'about' ? 'text-primary-600' : 'text-gray-600'}`} onClick={() => handleLinkClick('about')}>
                                 About
                             </ScrollLink>
-                            <ScrollLink
-                                to="projects"
-                                smooth={true}
-                                duration={500}
-                                className={`nav-link cursor-pointer ${activeLink === 'projects' ? 'text-primary-600' : 'text-gray-600'}`}
-                                onClick={() => handleLinkClick('projects')}
-                            >
+                            <ScrollLink to="projects" smooth duration={500} className={`nav-link cursor-pointer ${activeLink === 'projects' ? 'text-primary-600' : 'text-gray-600'}`} onClick={() => handleLinkClick('projects')}>
                                 Projects
                             </ScrollLink>
                         </>
                     )}
 
-                    {/* Always Show Blog Link */}
-                    <Link
-                        to="/blog"
-                        className={`nav-link ${activeLink === 'blog' ? 'text-primary-600' : 'text-gray-600'}`}
-                        onClick={() => handleLinkClick('blog')}
-                    >
+                    <Link href="/blog" className={`nav-link ${activeLink === 'blog' ? 'text-primary-600' : 'text-gray-600'}`} onClick={() => handleLinkClick('blog')}>
                         Blog
                     </Link>
 
-                    {/* Show Contact Only on Home Page */}
                     {!isBlogPage && (
-                        <ScrollLink
-                            to="contact"
-                            smooth={true}
-                            duration={500}
-                            className={`nav-link cursor-pointer ${activeLink === 'contact' ? 'text-primary-600' : 'text-gray-600'}`}
-                            onClick={() => handleLinkClick('contact')}
-                        >
+                        <ScrollLink to="contact" smooth duration={500} className={`nav-link cursor-pointer ${activeLink === 'contact' ? 'text-primary-600' : 'text-gray-600'}`} onClick={() => handleLinkClick('contact')}>
                             Contact
                         </ScrollLink>
                     )}
@@ -102,80 +79,40 @@ const NavBar = ({ scrolled }) => {
             </div>
 
             {/* Mobile Menu Items */}
-            <motion.div
-                className={`md:hidden ${isMenuOpen ? 'block' : 'hidden'} bg-white py-4`}
-                initial={{ opacity: 0 }}
-                animate={{ opacity: isMenuOpen ? 1 : 0 }}
-                transition={{ duration: 0.3 }}
-            >
-                {/* Always Show Home */}
+            <motion.div className={`md:hidden ${isMenuOpen ? 'block' : 'hidden'} bg-white py-4`} initial={{ opacity: 0 }} animate={{ opacity: isMenuOpen ? 1 : 0 }} transition={{ duration: 0.3 }}>
                 {isBlogPage ? (
-                    <Link
-                        to="/"
-                        className={`block px-4 py-2 ${activeLink === 'home' ? 'text-primary-600' : 'text-gray-600'}`}
-                        onClick={() => handleLinkClick('home')}
-                    >
+                    <Link href="/" className={`block px-4 py-2 ${activeLink === 'home' ? 'text-primary-600' : 'text-gray-600'}`} onClick={() => handleLinkClick('home')}>
                         Home
                     </Link>
                 ) : (
-                    <ScrollLink
-                        to="home"
-                        smooth={true}
-                        duration={500}
-                        className={`block px-4 py-2 ${activeLink === 'home' ? 'text-primary-600' : 'text-gray-600'}`}
-                        onClick={() => handleLinkClick('home')}
-                    >
+                    <ScrollLink to="home" smooth duration={500} className={`block px-4 py-2 ${activeLink === 'home' ? 'text-primary-600' : 'text-gray-600'}`} onClick={() => handleLinkClick('home')}>
                         Home
                     </ScrollLink>
                 )}
 
-                {/* Show Other Links Only on Home Page */}
                 {!isBlogPage && (
                     <>
-                        <ScrollLink
-                            to="about"
-                            smooth={true}
-                            duration={500}
-                            className={`block px-4 py-2 ${activeLink === 'about' ? 'text-primary-600' : 'text-gray-600'}`}
-                            onClick={() => handleLinkClick('about')}
-                        >
+                        <ScrollLink to="about" smooth duration={500} className={`block px-4 py-2 ${activeLink === 'about' ? 'text-primary-600' : 'text-gray-600'}`} onClick={() => handleLinkClick('about')}>
                             About
                         </ScrollLink>
-                        <ScrollLink
-                            to="projects"
-                            smooth={true}
-                            duration={500}
-                            className={`block px-4 py-2 ${activeLink === 'projects' ? 'text-primary-600' : 'text-gray-600'}`}
-                            onClick={() => handleLinkClick('projects')}
-                        >
+                        <ScrollLink to="projects" smooth duration={500} className={`block px-4 py-2 ${activeLink === 'projects' ? 'text-primary-600' : 'text-gray-600'}`} onClick={() => handleLinkClick('projects')}>
                             Projects
                         </ScrollLink>
                     </>
                 )}
 
-                {/* Always Show Blog Link */}
-                <Link
-                    to="/blog"
-                    className={`block px-4 py-2 ${activeLink === 'blog' ? 'text-primary-600' : 'text-gray-600'}`}
-                    onClick={() => handleLinkClick('blog')}
-                >
+                <Link href="/blog" className={`block px-4 py-2 ${activeLink === 'blog' ? 'text-primary-600' : 'text-gray-600'}`} onClick={() => handleLinkClick('blog')}>
                     Blog
                 </Link>
 
-                {/* Show Contact Only on Home Page */}
                 {!isBlogPage && (
-                    <ScrollLink
-                        to="contact"
-                        smooth={true}
-                        duration={500}
-                        className={`block px-4 py-2 ${activeLink === 'contact' ? 'text-primary-600' : 'text-gray-600'}`}
-                        onClick={() => handleLinkClick('contact')}
-                    >
+                    <ScrollLink to="contact" smooth duration={500} className={`block px-4 py-2 ${activeLink === 'contact' ? 'text-primary-600' : 'text-gray-600'}`} onClick={() => handleLinkClick('contact')}>
                         Contact
                     </ScrollLink>
                 )}
             </motion.div>
         </motion.nav>
-
     );
-}
+};
+
+export default NavBar;
