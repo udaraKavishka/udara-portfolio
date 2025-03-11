@@ -1,10 +1,10 @@
-import Link from 'next/link';
-import { motion } from 'framer-motion';
-import {ScrollLink } from 'react-scroll';
+import Image from "next/image";
+import { motion } from "framer-motion";
+import { Link as ScrollLink } from "react-scroll";
 
 const Hero = () => {
     return (
-        <div className="min-h-screen flex items-center bg-gradient-to-br from-primary-50 to-secondary-100 pt-24 md:pt-32"> {/* Added pt-24 for mobile and pt-32 for larger screens */}
+        <div className="min-h-screen flex items-center bg-gradient-to-br from-primary-50 to-secondary-100 pt-24 md:pt-32">
             <div className="container mx-auto px-4">
                 <div className="flex flex-col md:flex-row items-center">
                     {/* Left Column - Text */}
@@ -53,10 +53,13 @@ const Hero = () => {
                             className="relative flex justify-center"
                         >
                             <div className="w-64 h-64 md:w-80 md:h-80 lg:w-96 lg:h-96 bg-primary-600 rounded-lg overflow-hidden flex items-center justify-center shadow-xl">
-                                <img
+                                <Image
                                     src="/assets/profile.jpg"
                                     alt="Your Image"
+                                    width={384}
+                                    height={384}
                                     className="w-full h-full object-cover"
+                                    priority
                                 />
                             </div>
                             <div className="absolute -bottom-6 -right-6 w-16 h-16 md:w-20 md:h-20 lg:w-24 lg:h-24 bg-secondary-200 rounded-lg z-0"></div>
