@@ -1,6 +1,136 @@
 @import "tailwindcss";
 
-:root {
+
+/* Global Styles */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #f4f4f9; /* secondary-50 */
+  color: #2d3748; /* secondary-800 */
+  font-family: sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "HeadingFont", sans-serif; /* Assuming you want to apply a specific heading font */
+}
+
+.section-padding {
+  padding-top: 4rem; /* 16px */
+  padding-bottom: 4rem; /* 16px */
+}
+
+@media (min-width: 768px) {
+  .section-padding {
+    padding-top: 6rem; /* 24px */
+    padding-bottom: 6rem; /* 24px */
+  }
+}
+
+.container {
+  padding-left: 1rem; /* 4px */
+  padding-right: 1rem; /* 4px */
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 80rem; /* 7xl */
+}
+
+.btn {
+  padding-left: 1.5rem; /* 6px */
+  padding-right: 1.5rem; /* 6px */
+  padding-top: 0.75rem; /* 3px */
+  padding-bottom: 0.75rem; /* 3px */
+  border-radius: 0.5rem; /* 8px */
+  font-weight: 500; /* medium */
+  transition: all 0.3s ease-in-out;
+  display: inline-block;
+}
+
+.btn-primary {
+  background-color: #3182ce; /* primary-600 */
+  color: white;
+}
+
+.btn-primary:hover {
+  background-color: #2b6cb0; /* primary-700 */
+}
+
+.btn-outline {
+  border: 2px solid #3182ce; /* primary-600 */
+  color: #3182ce; /* primary-600 */
+}
+
+.btn-outline:hover {
+  background-color: #3182ce; /* primary-600 */
+  color: white;
+}
+
+.nav-link {
+  position: relative;
+  color: #4a5568; /* secondary-600 */
+  transition: color 0.3s ease-in-out;
+}
+
+.nav-link:hover {
+  color: #3182ce; /* primary-600 */
+}
+
+.nav-link.active {
+  color: #3182ce; /* primary-600 */
+}
+
+.nav-link::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 2px;
+  width: 0;
+  background-color: #3182ce; /* primary-600 */
+  transition: all 0.3s ease-in-out;
+}
+
+.nav-link:hover::after {
+  width: 100%;
+}
+
+.project-card {
+  background-color: white;
+  border-radius: 1rem; /* 16px */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: all 0.3s ease-in-out;
+}
+
+.project-card:hover {
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+  transform: translateY(-0.25rem); /* -4px */
+}
+
+.form-input {
+  width: 100%;
+  padding-left: 1rem; /* 4px */
+  padding-right: 1rem; /* 4px */
+  padding-top: 0.75rem; /* 3px */
+  padding-bottom: 0.75rem; /* 3px */
+  border-radius: 0.5rem; /* 8px */
+  border: 1px solid #e2e8f0; /* secondary-300 */
+  outline: none;
+}
+
+.form-input:focus {
+  border-color: transparent;
+  ring: 2px solid #3182ce; /* primary-500 */
+  border-radius: 0.5rem; /* 8px */
+}
+
+/* :root {
   --background: #ffffff;
   --foreground: #171717;
 }
@@ -12,7 +142,7 @@
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
+@media (prefers-color-scheme: white) {
   :root {
     --background: #ffffff;
     --foreground: #000000;
@@ -23,10 +153,7 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
-}
-
-
-
+} */
 
 /* html {
   scroll-behavior: smooth;
