@@ -5,7 +5,7 @@ const config = {
         "./pages/**/*.{js,ts,jsx,tsx}",
         "./components/**/*.{js,ts,jsx,tsx}"
     ],
-    darkMode: "class", // Can be 'media' or 'class'
+    darkMode: "class ", // Can be 'media' or 'class'
     theme: {
         extend: {
             fontFamily: {
