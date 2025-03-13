@@ -26,14 +26,18 @@ const NavBar = ({ scrolled }) => {
         >
             <div className="container mx-auto px-4 flex justify-between items-center">
                 {/* Logo */}
-                <Link href="/" className="cursor-pointer">
-                    <h1 className="text-2xl font-bold text-primary-600">Portfolio</h1>
+                <Link href="/">
+                    <span className="cursor-pointer">
+                        <h1 className="text-2xl font-bold text-primary-600">Portfolio</h1>
+                    </span>
                 </Link>
 
                 {/* Navigation Links */}
                 <div className="hidden md:flex space-x-8">
                     {isBlogPage ? (
-                        <Link href="/" className="nav-link">Home</Link>
+                        <Link href="/" onClick={() => handleLinkClick('home')}>
+                            <span className="nav-link">Home</span>
+                        </Link>
                     ) : (
                         <ScrollLink to="home" smooth duration={500} className={`nav-link cursor-pointer ${activeLink === 'home' ? 'text-primary-600' : 'text-gray-600'}`} onClick={() => handleLinkClick('home')}>
                             Home
@@ -51,8 +55,10 @@ const NavBar = ({ scrolled }) => {
                         </>
                     )}
 
-                    <Link href="/blog" className={`nav-link ${activeLink === 'blog' ? 'text-primary-600' : 'text-gray-600'}`} onClick={() => handleLinkClick('blog')}>
-                        Blog
+                    <Link href="/blog" onClick={() => handleLinkClick('blog')}>
+                        <span className={`nav-link ${activeLink === 'blog' ? 'text-primary-600' : 'text-gray-600'}`}>
+                            Blog
+                        </span>
                     </Link>
 
                     {!isBlogPage && (
@@ -81,8 +87,10 @@ const NavBar = ({ scrolled }) => {
             {/* Mobile Menu Items */}
             <motion.div className={`md:hidden ${isMenuOpen ? 'block' : 'hidden'} bg-white py-4`} initial={{ opacity: 0 }} animate={{ opacity: isMenuOpen ? 1 : 0 }} transition={{ duration: 0.3 }}>
                 {isBlogPage ? (
-                    <Link href="/" className={`block px-4 py-2 ${activeLink === 'home' ? 'text-primary-600' : 'text-gray-600'}`} onClick={() => handleLinkClick('home')}>
-                        Home
+                    <Link href="/" onClick={() => handleLinkClick('home')}>
+                        <span className={`block px-4 py-2 ${activeLink === 'home' ? 'text-primary-600' : 'text-gray-600'}`}>
+                            Home
+                        </span>
                     </Link>
                 ) : (
                     <ScrollLink to="home" smooth duration={500} className={`block px-4 py-2 ${activeLink === 'home' ? 'text-primary-600' : 'text-gray-600'}`} onClick={() => handleLinkClick('home')}>
@@ -101,8 +109,10 @@ const NavBar = ({ scrolled }) => {
                     </>
                 )}
 
-                <Link href="/blog" className={`block px-4 py-2 ${activeLink === 'blog' ? 'text-primary-600' : 'text-gray-600'}`} onClick={() => handleLinkClick('blog')}>
-                    Blog
+                <Link href="/blog" onClick={() => handleLinkClick('blog')}>
+                    <span className={`block px-4 py-2 ${activeLink === 'blog' ? 'text-primary-600' : 'text-gray-600'}`}>
+                        Blog
+                    </span>
                 </Link>
 
                 {!isBlogPage && (
