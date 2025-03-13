@@ -28,7 +28,7 @@ const Hero = () => {
                                     to="projects"
                                     smooth={true}
                                     duration={500}
-                                    className="px-6 py-3 rounded-lg font-medium transition-all duration-300 inline-block  bg-primary-600 text-white hover:bg-primary-700 "
+                                    className="btn btn-primary"
                                 >
                                     View My Work
                                 </ScrollLink>
@@ -36,7 +36,7 @@ const Hero = () => {
                                     to="contact"
                                     smooth={true}
                                     duration={500}
-                                    className="px-6 py-3 rounded-lg font-medium transition-all duration-300 inline-block border-2 border-primary-600 text-primary-600 hover:bg-primary-600 hover:text-white "
+                                    className="btn btn-outline"
                                 >
                                     Contact Me
                                 </ScrollLink>
