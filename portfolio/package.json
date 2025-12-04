@@ -10,9 +10,15 @@
   },
   "dependencies": {
     "framer-motion": "^12.6.5",
+<<<<<<< HEAD
     "next": "15.4.8",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
+=======
+    "next": "^15.5.7",
+    "react": "^19.2.1",
+    "react-dom": "^19.2.1",
+>>>>>>> 51a68e8 (chore: update dependencies for next and react versions)
     "react-intersection-observer": "^9.16.0"
   },
   "devDependencies": {
